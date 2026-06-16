@@ -1,0 +1,96 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  background: var(--beige);
+}
+
+.main {
+  flex: 1;
+  padding: 35px;
+  overflow-x: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.bigNumber {
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--hazelnut);
+  text-align: center;
+}
+
+.quickGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.quickGrid button {
+  height: 52px;
+  border: none;
+  border-radius: 14px;
+  background: var(--water);
+  color: white;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.quickGrid button:hover {
+  transform: translateY(-3px);
+  background: var(--hazelnut);
+}
+
+.calendarCard {
+  grid-column: span 2;
+}
+
+.events {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.events div {
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--beige);
+  display: flex;
+  justify-content: space-between;
+}
+
+.events strong {
+  color: var(--hazelnut);
+}
+
+.events span {
+  color: var(--text);
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calendarCard {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 20px;
+  }
+
+  .quickGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .bigNumber {
+    font-size: 4rem;
+  }
+}

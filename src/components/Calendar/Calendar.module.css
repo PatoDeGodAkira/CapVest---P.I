@@ -1,0 +1,35 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.day,
+.event {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.day {
+  background: var(--beige);
+}
+
+.day:hover {
+  transform: translateY(-2px);
+}
+
+.event {
+  background: var(--water);
+  color: white;
+  font-weight: 600;
+}
+
+.event:hover {
+  transform: translateY(-3px);
+}
