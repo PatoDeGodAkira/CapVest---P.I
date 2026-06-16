@@ -59,7 +59,7 @@ export default function Sidebar() {
       <div>
         <div className={styles.logo}>
           <img
-            src="/assets/logo.jpg"
+            src="./assets/logo.png"
             alt="Logo CapVest"
             onError={(e) => {
               e.target.style.display = "none";
