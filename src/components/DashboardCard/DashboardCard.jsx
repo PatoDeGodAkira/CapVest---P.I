@@ -14,3 +14,7 @@ export default function DashboardCard({
     </div>
   );
 }
+
+<button className="btn btn-primary">
+  Teste DaisyUI
+</button>
