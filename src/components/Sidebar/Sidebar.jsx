@@ -1,5 +1,7 @@
 import styles from "./Sidebar.module.css";
 
+import { NavLink } from "react-router-dom";
+
 import {
   FaHome,
   FaBook,
@@ -17,39 +19,48 @@ import {
 const menu = [
   {
     icon: <FaHome />,
-    label: "Início"
+    label: "Início",
+    path: "/home"
   },
   {
     icon: <FaBook />,
-    label: "Questões"
+    label: "Questões",
+    path: "/questoes"
   },
   {
     icon: <FaClipboardList />,
-    label: "Simulados"
+    label: "Simulados",
+    path: "/simulados"
   },
   {
     icon: <FaPen />,
-    label: "Redações"
+    label: "Redações",
+    path: "/redacoes"
   },
   {
     icon: <FaCalendarAlt />,
-    label: "Cronograma"
+    label: "Cronograma",
+    path: "/cronograma"
   },
   {
     icon: <FaTrophy />,
-    label: "Ranking"
+    label: "Ranking",
+    path: "/ranking"
   },
   {
     icon: <FaChartLine />,
-    label: "Desempenho"
+    label: "Desempenho",
+    path: "/desempenho"
   },
   {
     icon: <FaFolder />,
-    label: "Materiais"
+    label: "Materiais",
+    path: "/materiais"
   },
   {
     icon: <FaCog />,
-    label: "Configurações"
+    label: "Configurações",
+    path: "/configuracoes"
   }
 ];
 
@@ -57,7 +68,13 @@ export default function Sidebar() {
   return (
     <aside className={styles.sidebar}>
       <div>
-        <div className={styles.logo}>
+
+        {/* LOGO */}
+
+        <NavLink
+          to="/home"
+          className={styles.logo}
+        >
           <img
             src="/assets/logo.jpg"
             alt="Logo CapVest"
@@ -67,39 +84,72 @@ export default function Sidebar() {
           />
 
           <h2>CapVest</h2>
-        </div>
+        </NavLink>
 
-        <div className={styles.profile}>
+        {/* PERFIL */}
+
+        <NavLink
+          to="/perfil"
+          className={styles.profile}
+        >
           <div className={styles.avatar}></div>
 
           <div>
             <h4>João Silva</h4>
             <span>Estudante</span>
           </div>
-        </div>
+        </NavLink>
+
+        {/* PESQUISA */}
 
         <div className={styles.search}>
           <FaSearch />
 
           <input
+            type="text"
             placeholder="Pesquisar..."
           />
         </div>
 
+        {/* MENU */}
+
         <nav>
+
           {menu.map((item) => (
-            <button key={item.label}>
+
+            <NavLink
+              key={item.label}
+              to={item.path}
+              className={({ isActive }) =>
+                `${styles.menuItem} ${
+                  isActive ? styles.active : ""
+                }`
+              }
+            >
               {item.icon}
-              {item.label}
-            </button>
+
+              <span>{item.label}</span>
+
+            </NavLink>
+
           ))}
+
         </nav>
+
       </div>
 
-      <button className={styles.logout}>
+      {/* SAIR */}
+
+      <NavLink
+        to="/"
+        className={styles.logout}
+      >
         <FaSignOutAlt />
-        Sair
-      </button>
+
+        <span>Sair</span>
+
+      </NavLink>
+
     </aside>
   );
 }

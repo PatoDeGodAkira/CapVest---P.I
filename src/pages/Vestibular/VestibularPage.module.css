@@ -1,0 +1,641 @@
+:root{
+    --hazelnut:#6b4f3b;
+    --ochre:#a87a3a;
+    --olive:#76805b;
+    --water:#6fb7b7;
+    --beige:#f8f4ed;
+
+    --text:#2d2d2d;
+    --border:rgba(0,0,0,.08);
+}
+
+.layout{
+    display:flex;
+    min-height:100vh;
+    background:var(--beige);
+}
+
+.content{
+    flex:1;
+    overflow-y:auto;
+}
+
+/* HERO */
+
+.hero{
+    height:420px;
+
+    position:relative;
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:flex-end;
+
+    overflow:hidden;
+}
+
+.overlay{
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        to top,
+        rgba(0,0,0,.72),
+        rgba(0,0,0,.25)
+    );
+
+}
+
+.heroContent{
+
+    position:relative;
+
+    z-index:5;
+
+    padding:70px;
+
+    color:white;
+
+}
+
+.heroContent h1{
+
+    font-size:4rem;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+}
+
+.heroContent h2{
+
+    margin-top:10px;
+
+    font-size:1.3rem;
+
+    font-weight:400;
+
+    opacity:.92;
+
+}
+
+/* SOBRE */
+
+.about{
+
+    width:min(1300px,92%);
+
+    margin:55px auto;
+
+}
+
+.about h2{
+
+    color:var(--hazelnut);
+
+    font-size:2rem;
+
+    margin-bottom:18px;
+
+}
+
+.about p{
+
+    line-height:1.9;
+
+    color:#555;
+
+    font-size:1.05rem;
+
+}
+
+/* ESTATÍSTICAS */
+
+.stats{
+
+    width:min(1300px,92%);
+
+    margin:auto;
+
+    display:grid;
+
+    gap:24px;
+
+    grid-template-columns:
+    repeat(
+        auto-fit,
+        minmax(220px,1fr)
+    );
+
+}
+
+.statCard{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:28px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.05);
+
+    border:1px solid var(--border);
+
+    transition:.35s;
+
+}
+
+.statCard:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.statCard span{
+
+    color:#777;
+
+    display:block;
+
+    margin-bottom:14px;
+
+}
+
+.statCard strong{
+
+    color:var(--hazelnut);
+
+    font-size:2rem;
+
+}
+
+/* GALERIA */
+
+.gallery{
+
+    width:min(1300px,92%);
+
+    margin:70px auto;
+
+}
+
+.sectionHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.sectionHeader h2{
+
+    color:var(--hazelnut);
+
+    font-size:2rem;
+
+}
+
+.galleryGrid{
+
+    display:grid;
+
+    gap:18px;
+
+    grid-template-columns:
+
+    repeat(
+        auto-fit,
+        minmax(260px,1fr)
+    );
+
+}
+
+.galleryGrid img{
+
+    width:100%;
+
+    height:240px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    transition:.45s;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.galleryGrid img:hover{
+
+    transform:scale(1.04);
+
+}
+
+/* ===========================
+   MATERIAIS
+=========================== */
+
+.materials{
+
+    width:min(1300px,92%);
+
+    margin:80px auto;
+
+}
+
+.materials h2{
+
+    color:var(--hazelnut);
+
+    font-size:2rem;
+
+    margin-bottom:30px;
+
+}
+
+.materialGrid{
+
+    display:grid;
+
+    gap:24px;
+
+    grid-template-columns:
+
+    repeat(
+        auto-fit,
+        minmax(250px,1fr)
+    );
+
+}
+
+.materialCard{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:35px;
+
+    border:1px solid var(--border);
+
+    box-shadow:
+
+    0 12px 30px rgba(0,0,0,.05);
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+.materialCard:hover{
+
+    transform:translateY(-10px);
+
+    border-color:var(--water);
+
+}
+
+.materialCard svg{
+
+    font-size:3rem;
+
+    color:var(--water);
+
+    margin-bottom:22px;
+
+}
+
+.materialCard h3{
+
+    color:var(--hazelnut);
+
+    margin-bottom:12px;
+
+}
+
+.materialCard p{
+
+    color:#666;
+
+    line-height:1.6;
+
+}
+
+/* ===========================
+   TIMELINE
+=========================== */
+
+.timeline{
+
+    width:min(1300px,92%);
+
+    margin:70px auto;
+
+    margin-bottom:100px;
+
+}
+
+.timeline h2{
+
+    color:var(--hazelnut);
+
+    margin-bottom:28px;
+
+}
+
+.timelineList{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+}
+
+.timelineCard{
+
+    flex:1;
+
+    min-width:220px;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    border:1px solid var(--border);
+
+    transition:.3s;
+
+    box-shadow:
+
+    0 10px 20px rgba(0,0,0,.04);
+
+}
+
+.timelineCard:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.timelineCard svg{
+
+    color:var(--ochre);
+
+    font-size:1.5rem;
+
+}
+
+.timelineCard span{
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+/* ===========================
+   ANIMAÇÕES
+=========================== */
+
+.hero,
+.about,
+.stats,
+.gallery,
+.materials,
+.timeline{
+
+    animation:fadeUp .8s ease both;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===========================
+   RESPONSIVO
+=========================== */
+
+@media(max-width:1200px){
+
+.hero{
+
+height:340px;
+
+}
+
+.heroContent{
+
+padding:50px;
+
+}
+
+.heroContent h1{
+
+font-size:3rem;
+
+}
+
+}
+
+@media(max-width:900px){
+
+.hero{
+
+height:300px;
+
+}
+
+.heroContent{
+
+padding:35px;
+
+}
+
+.heroContent h1{
+
+font-size:2.4rem;
+
+}
+
+.heroContent h2{
+
+font-size:1.1rem;
+
+}
+
+.galleryGrid{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+.materialGrid{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.layout{
+
+display:block;
+
+}
+
+.content{
+
+width:100%;
+
+}
+
+.hero{
+
+height:240px;
+
+}
+
+.heroContent{
+
+padding:25px;
+
+}
+
+.heroContent h1{
+
+font-size:2rem;
+
+}
+
+.heroContent h2{
+
+font-size:1rem;
+
+}
+
+.stats{
+
+grid-template-columns:1fr;
+
+}
+
+.galleryGrid{
+
+grid-template-columns:1fr;
+
+}
+
+.materialGrid{
+
+grid-template-columns:1fr;
+
+}
+
+.timelineList{
+
+flex-direction:column;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.hero{
+
+height:200px;
+
+}
+
+.heroContent{
+
+padding:20px;
+
+}
+
+.heroContent h1{
+
+font-size:1.7rem;
+
+}
+
+.about h2,
+.materials h2,
+.timeline h2,
+.sectionHeader h2{
+
+font-size:1.5rem;
+
+}
+
+.about p{
+
+font-size:.95rem;
+
+}
+
+.statCard{
+
+padding:22px;
+
+}
+
+.materialCard{
+
+padding:28px;
+
+}
+
+}

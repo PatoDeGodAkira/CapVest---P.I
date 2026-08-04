@@ -17,6 +17,9 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 32px;
+
+  text-decoration: none;
+  color: inherit;
 }
 
 .logo img {
@@ -38,6 +41,9 @@
   border-radius: 16px;
   background: var(--beige);
   margin-bottom: 24px;
+
+  text-decoration: none;
+  color: inherit;
 }
 
 .avatar {
@@ -84,36 +90,64 @@ nav {
   gap: 6px;
 }
 
-nav button {
+/* ---------- MENU ---------- */
+
+.menuItem {
   height: 48px;
-  border: none;
   border-radius: 12px;
-  background: transparent;
+
   display: flex;
   align-items: center;
   gap: 12px;
+
   padding: 0 14px;
-  cursor: pointer;
-  transition: .3s;
+
+  text-decoration: none;
   color: var(--text);
+
+  transition: .3s;
 }
 
-nav button:hover {
+.menuItem:hover {
   background: rgba(111,183,183,.12);
   color: var(--hazelnut);
 }
 
+.menuItem svg {
+  font-size: 1rem;
+}
+
+.active {
+  background: var(--water);
+  color: white !important;
+}
+
+.active svg {
+  color: white;
+}
+
+.active span {
+  color: white;
+}
+
+/* ---------- BOTÃO SAIR ---------- */
+
 .logout {
-  border: none;
   height: 50px;
   border-radius: 12px;
+
   background: rgba(220,0,0,.08);
   color: #b00020;
+
   cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+
+  text-decoration: none;
+
   transition: .3s;
 }
 
