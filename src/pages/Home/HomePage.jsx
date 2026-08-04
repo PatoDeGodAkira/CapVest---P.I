@@ -1,106 +1,68 @@
 import styles from "./HomePage.module.css";
 
 import Sidebar from "../../components/Sidebar/Sidebar";
-import DashboardCard from "../../components/DashboardCard/DashboardCard";
-import Calendar from "../../components/Calendar/Calendar";
 
-import {
-  notices,
-  news,
-  activities,
-  events
-} from "../../data/mockData";
+import TopBar from "../../components/Home/TopBar/TopBar";
+import HeroBanner from "../../components/Home/HeroBanner/HeroBanner";
+import GoalCard from "../../components/Home/GoalCard/GoalCard";
+import ContinueCard from "../../components/Home/TodayFocusCard/TodayFocusCard";
+import QuickActions from "../../components/Home/QuickActions/QuickActions";
+import StatsGrid from "../../components/Home/StatsGrid/StatsGrid";
+import RankingCard from "../../components/Home/RankingCard/RankingCard";
+
+import NewsSection from "../../components/Home/NewsSection/NewsSection";
+import StudyCalendar from "../../components/Home/StudyCalendar/StudyCalendar";
+import EventsCard from "../../components/Home/EventsCard/EventsCard";
+import Footer from "../../components/Home/Footer/Footer";
 
 export default function HomePage() {
-  return (
-    <div className={styles.page}>
-      <Sidebar />
 
-      <main className={styles.main}>
-        <div className={styles.grid}>
-          <DashboardCard title="Avisos">
-            {notices.map((item) => (
-              <div key={item}>
-                {item}
-              </div>
-            ))}
-          </DashboardCard>
+    return (
 
-          <DashboardCard title="Atividades Pendentes">
-            <div className={styles.bigNumber}>
-              {activities}
-            </div>
+        <div className={styles.layout}>
 
-            <p>
-              Atividades aguardando conclusão
-            </p>
-          </DashboardCard>
+            <Sidebar />
 
-          <DashboardCard title="Notícias e Vestibulares">
-            {news.map((item) => (
-              <div key={item.title}>
-                <strong>
-                  {item.title}
-                </strong>
+            <main className={styles.main}>
 
-                <small>
-                  {item.category}
-                </small>
-              </div>
-            ))}
-          </DashboardCard>
+                <TopBar />
 
-          <DashboardCard title="Acesso Rápido">
-            <div className={styles.quickGrid}>
-              <button>
-                Resolver Questões
-              </button>
+                <HeroBanner />
 
-              <button>
-                Fazer Simulado
-              </button>
+                <section className={styles.firstRow}>
 
-              <button>
-                Enviar Redação
-              </button>
+                    <GoalCard />
 
-              <button>
-                Ver Desempenho
-              </button>
+                    <ContinueCard />
 
-              <button>
-                Ranking Geral
-              </button>
+                </section>
 
-              <button>
-                Cronograma
-              </button>
-            </div>
-          </DashboardCard>
+                <QuickActions />
 
-          <div
-            className={styles.calendarCard}
-          >
-            <DashboardCard title="Calendário de Estudos">
-              <Calendar />
+                <section className={styles.secondRow}>
 
-              <div className={styles.events}>
-                {events.map((event) => (
-                  <div key={event.title}>
-                    <strong>
-                      Dia {event.day}
-                    </strong>
+                    <StatsGrid />
 
-                    <span>
-                      {event.title}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </DashboardCard>
-          </div>
+                    <RankingCard />
+
+                </section>
+
+                <NewsSection />
+
+                <section className={styles.calendarRow}>
+
+                    <StudyCalendar />
+
+                    <EventsCard />
+
+                </section>
+
+                <Footer />
+
+            </main>
+
         </div>
-      </main>
-    </div>
-  );
+
+    );
+
 }

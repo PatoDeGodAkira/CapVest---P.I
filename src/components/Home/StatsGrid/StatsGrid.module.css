@@ -1,0 +1,159 @@
+.container{
+
+    background:white;
+
+    border-radius:24px;
+
+    border:1px solid var(--border);
+
+    padding:28px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.04);
+
+}
+
+.header{
+
+    margin-bottom:28px;
+
+}
+
+.header h2{
+
+    color:var(--text);
+
+    margin-bottom:6px;
+
+}
+
+.header p{
+
+    color:#777;
+
+}
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px;
+
+}
+
+.card{
+
+    padding:24px;
+
+    border-radius:18px;
+
+    background:#fcfcfc;
+
+    border:1px solid rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:var(--water);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+}
+
+.icon{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:16px;
+
+    background:rgba(111,183,183,.12);
+
+    color:var(--water);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:22px;
+
+    margin-bottom:18px;
+
+}
+
+.title{
+
+    display:block;
+
+    color:#777;
+
+    font-size:14px;
+
+    margin-bottom:8px;
+
+}
+
+.card h3{
+
+    font-size:2rem;
+
+    color:var(--hazelnut);
+
+    margin-bottom:18px;
+
+}
+
+.progress{
+
+    height:12px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:#ececec;
+
+    margin-bottom:12px;
+
+}
+
+.fill{
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        90deg,
+        var(--water),
+        var(--olive)
+    );
+
+}
+
+.card small{
+
+    color:var(--olive);
+
+    font-weight:600;
+
+}
+
+@media(max-width:900px){
+
+    .grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

@@ -1,0 +1,266 @@
+.topbar{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:30px;
+
+}
+
+.left{
+
+    flex:1;
+
+}
+
+.search{
+
+    display:flex;
+    align-items:center;
+
+    gap:15px;
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    height:58px;
+
+    border-radius:16px;
+
+    padding:0 22px;
+
+    transition:.3s;
+
+}
+
+.search:hover{
+
+    border-color:var(--water);
+
+}
+
+.search:focus-within{
+
+    border-color:var(--water);
+
+    box-shadow:0 0 0 4px rgba(111,183,183,.15);
+
+}
+
+.search svg{
+
+    color:var(--olive);
+
+    font-size:18px;
+
+}
+
+.search input{
+
+    flex:1;
+
+    border:none;
+
+    background:none;
+
+    outline:none;
+
+    font-size:15px;
+
+    color:var(--text);
+
+}
+
+.right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.date{
+
+    font-size:14px;
+
+    color:#777;
+
+    text-transform:capitalize;
+
+}
+
+.streak{
+
+    border:none;
+
+    background:#fff4e4;
+
+    color:#d07a00;
+
+    height:50px;
+
+    padding:0 18px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.streak:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.iconButton{
+
+    position:relative;
+
+    width:50px;
+
+    height:50px;
+
+    border:none;
+
+    background:white;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    border:1px solid var(--border);
+
+}
+
+.iconButton:hover{
+
+    transform:translateY(-2px);
+
+    border-color:var(--water);
+
+}
+
+.notification{
+
+    position:absolute;
+
+    width:9px;
+
+    height:9px;
+
+    background:#ff4c4c;
+
+    border-radius:50%;
+
+    top:12px;
+
+    right:12px;
+
+}
+
+.user{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:10px 16px;
+
+    border-radius:18px;
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    transition:.3s;
+
+}
+
+.user:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.user img{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.user strong{
+
+    display:block;
+
+    color:var(--text);
+
+}
+
+.user span{
+
+    font-size:13px;
+
+    color:#777;
+
+}
+
+@media(max-width:1100px){
+
+    .date{
+
+        display:none;
+
+    }
+
+}
+
+@media(max-width:900px){
+
+    .topbar{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+    }
+
+    .right{
+
+        justify-content:space-between;
+
+    }
+
+}
+
+@media(max-width:700px){
+
+    .user div{
+
+        display:none;
+
+    }
+
+}

@@ -1,0 +1,207 @@
+.card{
+
+    background:white;
+    border-radius:24px;
+    padding:30px;
+
+    border:1px solid var(--border);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:28px;
+
+}
+
+.header h2{
+
+    color:var(--text);
+    margin-bottom:6px;
+
+}
+
+.header p{
+
+    color:#777;
+
+}
+
+.crown{
+
+    color:#f7b500;
+    font-size:28px;
+
+}
+
+.position{
+
+    background:linear-gradient(
+        135deg,
+        var(--hazelnut),
+        var(--ochre)
+    );
+
+    color:white;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+}
+
+.position span{
+
+    opacity:.9;
+
+}
+
+.position h1{
+
+    font-size:3rem;
+    margin:8px 0;
+
+}
+
+.up{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+}
+
+.progressArea{
+
+    margin-bottom:25px;
+
+}
+
+.progressHeader{
+
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+}
+
+.progressHeader span{
+
+    color:#777;
+
+}
+
+.progressBar{
+
+    height:12px;
+    background:#ececec;
+    border-radius:999px;
+    overflow:hidden;
+
+}
+
+.fill{
+
+    width:82%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        var(--water),
+        var(--olive)
+    );
+
+    border-radius:999px;
+
+}
+
+.list{
+
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+
+}
+
+.item{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:15px 18px;
+
+    border-radius:16px;
+
+    background:#fafafa;
+
+    transition:.3s;
+
+}
+
+.item:hover{
+
+    background:rgba(111,183,183,.10);
+
+}
+
+.me{
+
+    background:rgba(111,183,183,.18);
+
+    border:2px solid var(--water);
+
+}
+
+.left{
+
+    display:flex;
+    align-items:center;
+    gap:16px;
+
+}
+
+.number{
+
+    width:42px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    color:var(--hazelnut);
+
+}
+
+.right{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    color:#666;
+
+}
+
+.medal{
+
+    color:#f7b500;
+
+}

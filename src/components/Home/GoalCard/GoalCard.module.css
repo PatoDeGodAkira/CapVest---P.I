@@ -1,0 +1,233 @@
+.card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    border:1px solid var(--border);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        var(--hazelnut),
+        var(--ochre)
+    );
+
+    color:white;
+
+    font-size:28px;
+
+}
+
+.subtitle{
+
+    color:#888;
+
+    font-size:14px;
+
+}
+
+.header h2{
+
+    margin:6px 0;
+
+    color:var(--text);
+
+}
+
+.header p{
+
+    color:#666;
+
+}
+
+.progressArea{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.progressHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.progressHeader span{
+
+    color:#777;
+
+}
+
+.progressHeader strong{
+
+    color:var(--hazelnut);
+
+}
+
+.progressBar{
+
+    width:100%;
+
+    height:12px;
+
+    border-radius:999px;
+
+    background:#ececec;
+
+    overflow:hidden;
+
+}
+
+.fill{
+
+    width:63%;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        90deg,
+        var(--water),
+        var(--olive)
+    );
+
+}
+
+.stats{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.stats>div{
+
+    display:flex;
+
+    gap:16px;
+
+    align-items:center;
+
+}
+
+.stats svg{
+
+    color:var(--water);
+
+    font-size:20px;
+
+}
+
+.stats small{
+
+    display:block;
+
+    color:#777;
+
+    margin-bottom:3px;
+
+}
+
+.stats strong{
+
+    color:var(--text);
+
+}
+
+.button{
+
+    margin-top:auto;
+
+    border:none;
+
+    height:50px;
+
+    border-radius:14px;
+
+    background:linear-gradient(
+        135deg,
+        var(--hazelnut),
+        var(--ochre)
+    );
+
+    color:white;
+
+    font-weight:600;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 20px rgba(0,0,0,.12);
+
+}

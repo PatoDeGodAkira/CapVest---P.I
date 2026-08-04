@@ -1,0 +1,257 @@
+.calendar{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    border:1px solid var(--border);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.04);
+
+}
+
+.header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+}
+
+.header h2{
+
+    color:var(--text);
+
+    margin-bottom:6px;
+
+}
+
+.header p{
+
+    color:#777;
+
+}
+
+.navigation{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.navigation button{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    background:var(--beige);
+
+    transition:.3s;
+
+}
+
+.navigation button:hover{
+
+    background:var(--water);
+
+    color:white;
+
+}
+
+.content{
+
+    display:grid;
+
+    grid-template-columns:2fr 320px;
+
+    gap:30px;
+
+}
+
+.week{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    text-align:center;
+
+    margin-bottom:12px;
+
+    color:#777;
+
+    font-weight:600;
+
+}
+
+.days{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    gap:12px;
+
+}
+
+.day{
+
+    aspect-ratio:1;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#fafafa;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    border:1px solid transparent;
+
+}
+
+.day:hover{
+
+    border-color:var(--water);
+
+    transform:translateY(-3px);
+
+}
+
+.active{
+
+    background:linear-gradient(
+        135deg,
+        var(--hazelnut),
+        var(--ochre)
+    );
+
+    color:white;
+
+    font-weight:700;
+
+}
+
+.events{
+
+    background:#fafafa;
+
+    border-radius:20px;
+
+    padding:24px;
+
+}
+
+.events h3{
+
+    margin-bottom:20px;
+
+    color:var(--text);
+
+}
+
+.event{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    background:white;
+
+    margin-bottom:12px;
+
+    transition:.3s;
+
+}
+
+.event:hover{
+
+    transform:translateX(5px);
+
+}
+
+.event svg{
+
+    color:var(--water);
+
+}
+
+.footer{
+
+    margin-top:28px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border-top:1px solid var(--border);
+
+    padding-top:24px;
+
+}
+
+.footer div{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:var(--olive);
+
+}
+
+@media(max-width:1100px){
+
+    .content{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:700px){
+
+    .header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:20px;
+
+    }
+
+}

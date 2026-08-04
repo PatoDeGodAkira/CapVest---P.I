@@ -1,0 +1,234 @@
+.card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    border:1px solid var(--border);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.04);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    margin-bottom:25px;
+
+}
+
+.header h2{
+
+    color:var(--text);
+
+    margin-bottom:6px;
+
+}
+
+.header p{
+
+    color:#777;
+
+}
+
+.time{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    background:rgba(111,183,183,.12);
+
+    color:var(--olive);
+
+    padding:10px 14px;
+
+    border-radius:999px;
+
+    font-size:14px;
+
+}
+
+.progressArea{
+
+    margin-bottom:25px;
+
+}
+
+.progressTop{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+}
+
+.progressTop span{
+
+    color:#777;
+
+}
+
+.progressBar{
+
+    height:14px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:#ececec;
+
+}
+
+.progress{
+
+    width:40%;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        90deg,
+        var(--water),
+        var(--olive)
+    );
+
+}
+
+.tasks{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.task,
+.done{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    transition:.25s;
+
+}
+
+.task{
+
+    background:#fafafa;
+
+}
+
+.task:hover{
+
+    background:rgba(111,183,183,.10);
+
+}
+
+.done{
+
+    background:rgba(118,128,91,.10);
+
+}
+
+.done svg{
+
+    color:#42b883;
+
+}
+
+.task svg{
+
+    color:var(--water);
+
+}
+
+.task strong,
+.done strong{
+
+    display:block;
+
+    color:var(--text);
+
+}
+
+.task span,
+.done span{
+
+    font-size:14px;
+
+    color:#777;
+
+}
+
+.button{
+
+    margin-top:28px;
+
+    width:100%;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:var(--water);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.button:hover{
+
+    transform:translateY(-3px);
+
+    filter:brightness(.95);
+
+}
