@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {Routes, Route } from "react-router-dom";
 
 import LoginPage from "../pages/Login/LoginPage";
 import HomePage from "../pages/Home/HomePage";
@@ -6,10 +6,10 @@ import StartPage from "../pages/Start/StartPage";
 import ProfilePage from "../pages/Profile/ProfilePage";
 import MaterialsPage from "../pages/Materials/MaterialsPage";
 import VestibularPage from "../pages/Vestibular/VestibularPage";
+import QuestionsPage from "../pages/Questions/QuestionsPage";
 
 export default function AppRoutes() {
   return (
-    <BrowserRouter>
       <Routes>
         <Route path="/" element={<StartPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -17,7 +17,7 @@ export default function AppRoutes() {
         <Route path="/perfil" element={<ProfilePage />} />
         <Route path="/materiais" element={<MaterialsPage />} />
         <Route path="/materiais/:id" element={<VestibularPage />} />
+        <Route path="/questoes" element={<QuestionsPage />} />
       </Routes>
-    </BrowserRouter>
   );
 }

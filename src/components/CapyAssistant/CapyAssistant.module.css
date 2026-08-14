@@ -1,0 +1,840 @@
+.assistant {
+    position: fixed;
+    right: 24px;
+    bottom: 0;
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   BOTÃO DA CAPIVARA
+========================================= */
+
+.capyButton {
+
+    width: 110px;
+    height: 95px;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    position: relative;
+
+    pointer-events: auto;
+
+    transition: .3s ease;
+
+    overflow: hidden;
+
+}
+
+.capyButton:hover {
+
+    transform: translateY(-8px);
+
+}
+
+
+/* =========================================
+   CABEÇA
+========================================= */
+
+.capyFace {
+
+    position: absolute;
+
+    width: 92px;
+    height: 78px;
+
+    left: 9px;
+    bottom: -8px;
+
+    background: #9b6a43;
+
+    border-radius:
+        45% 45%
+        38% 38%;
+
+    border: 3px solid #70472d;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.18);
+
+}
+
+
+/* ORELHAS */
+
+.earLeft,
+.earRight {
+
+    position: absolute;
+
+    width: 24px;
+    height: 24px;
+
+    top: -12px;
+
+    background: #8a5b39;
+
+    border-radius: 50%;
+
+    border: 3px solid #70472d;
+
+}
+
+.earLeft {
+
+    left: 8px;
+
+}
+
+.earRight {
+
+    right: 8px;
+
+}
+
+
+/* OLHOS */
+
+.eyes {
+
+    position: absolute;
+
+    top: 29px;
+    left: 0;
+    right: 0;
+
+    display: flex;
+
+    justify-content: space-around;
+
+    padding: 0 22px;
+
+}
+
+.eyes span {
+
+    width: 8px;
+    height: 8px;
+
+    background: #241812;
+
+    border-radius: 50%;
+
+}
+
+
+/* FOCINHO */
+
+.muzzle {
+
+    position: absolute;
+
+    width: 45px;
+    height: 27px;
+
+    background: #b98158;
+
+    border-radius: 50%;
+
+    left: 50%;
+    bottom: 9px;
+
+    transform: translateX(-50%);
+
+}
+
+
+/* NARIZ */
+
+.nose {
+
+    position: absolute;
+
+    width: 18px;
+    height: 12px;
+
+    background: #342019;
+
+    border-radius: 50%;
+
+    left: 50%;
+    bottom: 25px;
+
+    transform: translateX(-50%);
+
+    z-index: 2;
+
+}
+
+
+/* =========================================
+   PAINEL
+========================================= */
+
+.panel {
+
+    width: 390px;
+
+    max-height: calc(100vh - 120px);
+
+    overflow-y: auto;
+
+    margin-bottom: 10px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.16);
+
+    padding: 22px;
+
+    pointer-events: auto;
+
+    animation: panelOpen .3s ease;
+
+}
+
+@keyframes panelOpen {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(.96);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.panelHeader {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+.capyIcon {
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--beige);
+
+    border-radius: 14px;
+
+    font-size: 27px;
+
+}
+
+.panelHeader h3 {
+
+    margin: 0;
+
+    color: var(--text);
+
+}
+
+.panelHeader span {
+
+    font-size: 12px;
+
+    color: #888;
+
+}
+
+.closeButton {
+
+    margin-left: auto;
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #777;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: .2s;
+
+}
+
+.closeButton:hover {
+
+    background: var(--beige);
+
+    color: var(--hazelnut);
+
+}
+
+
+/* =========================================
+   MENSAGEM
+========================================= */
+
+.message {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin: 20px 0;
+
+    align-items: flex-start;
+
+}
+
+.messageCapy {
+
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: var(--beige);
+
+    font-size: 22px;
+
+}
+
+.message p {
+
+    margin: 0;
+
+    padding: 11px 14px;
+
+    border-radius: 14px;
+
+    background: #f5f2ed;
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================
+   PESQUISA
+========================================= */
+
+.searchArea label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: var(--text);
+
+}
+
+.searchBox {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 13px 14px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 14px;
+
+    background: white;
+
+    transition: .2s;
+
+}
+
+.searchBox:focus-within {
+
+    border-color: var(--water);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(111,183,183,.12);
+
+}
+
+.searchBox > svg {
+
+    color: var(--olive);
+
+}
+
+.searchBox input {
+
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-size: 14px;
+
+}
+
+.searchBox input::placeholder {
+
+    color: #aaa;
+
+}
+
+.clearButton {
+
+    border: none;
+
+    background: transparent;
+
+    color: #aaa;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================
+   FILTROS
+========================================= */
+
+.filters {
+
+    margin-top: 18px;
+
+}
+
+.filterTitle {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: var(--text);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-bottom: 10px;
+
+}
+
+.filterTitle svg {
+
+    color: var(--olive);
+
+}
+
+.filterButtons {
+
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+
+}
+
+.filterButtons button {
+
+    padding: 8px 13px;
+
+    border-radius: 10px;
+
+    border: 1px solid #ddd;
+
+    background: white;
+
+    color: #777;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition: .2s;
+
+}
+
+.filterButtons button:hover {
+
+    border-color: var(--water);
+
+    color: var(--hazelnut);
+
+}
+
+.filterButtons .activeFilter {
+
+    background: var(--hazelnut);
+
+    color: white;
+
+    border-color: var(--hazelnut);
+
+}
+
+
+/* =========================================
+   BOTÃO PESQUISAR
+========================================= */
+
+.searchButton {
+
+    width: 100%;
+
+    height: 46px;
+
+    margin-top: 20px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--hazelnut),
+            var(--ochre)
+        );
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+}
+
+.searchButton:hover:not(:disabled) {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(107,79,59,.2);
+
+}
+
+.searchButton:disabled {
+
+    opacity: .45;
+
+    cursor: not-allowed;
+
+}
+
+
+/* =========================================
+   RESULTADOS
+========================================= */
+
+.results {
+
+    margin-top: 20px;
+
+    padding: 17px;
+
+    background: #f8f6f2;
+
+    border-radius: 16px;
+
+    animation: resultOpen .25s ease;
+
+}
+
+@keyframes resultOpen {
+
+    from {
+
+        opacity: 0;
+        transform: translateY(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+
+}
+
+.resultHeader {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+}
+
+.resultHeader span {
+
+    display: block;
+
+    font-size: 11px;
+
+    color: #888;
+
+    margin-bottom: 4px;
+
+}
+
+.resultHeader strong {
+
+    display: block;
+
+    color: var(--text);
+
+    font-size: 15px;
+
+}
+
+.resultHeader > svg {
+
+    color: var(--water);
+
+    font-size: 20px;
+
+}
+
+.resultDescription {
+
+    margin: 13px 0;
+
+    color: #666;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+}
+
+.resultInfo {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 10px 0;
+
+    border-top: 1px solid #e5e1da;
+
+    color: #777;
+
+    font-size: 12px;
+
+}
+
+.resultInfo strong {
+
+    color: var(--hazelnut);
+
+}
+
+
+/* =========================================
+   IR PARA QUESTÕES
+========================================= */
+
+.questionsButton {
+
+    width: 100%;
+
+    height: 42px;
+
+    margin-top: 10px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: var(--water);
+
+    color: white;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 9px;
+
+    transition: .2s;
+
+}
+
+.questionsButton:hover {
+
+    background: var(--olive);
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================================
+   DICA
+========================================= */
+
+.tip {
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: flex-start;
+
+    margin-top: 18px;
+
+    padding: 13px;
+
+    background: rgba(111,183,183,.08);
+
+    border-radius: 13px;
+
+}
+
+.tip span {
+
+    font-size: 17px;
+
+}
+
+.tip p {
+
+    margin: 0;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    color: #777;
+
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media(max-width:600px) {
+
+    .assistant {
+
+        right: 12px;
+
+    }
+
+    .panel {
+
+        width:
+            calc(100vw - 24px);
+
+        max-height:
+            calc(100vh - 100px);
+
+    }
+
+    .capyButton {
+
+        width: 95px;
+
+    }
+
+}

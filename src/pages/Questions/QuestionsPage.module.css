@@ -1,0 +1,1060 @@
+.layout {
+
+    display: flex;
+
+    min-height: 100vh;
+
+    background: var(--beige);
+
+}
+
+.main {
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 36px 42px;
+
+    overflow-y: auto;
+
+    color: var(--text);
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 28px;
+
+}
+
+.eyebrow {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--olive);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+}
+
+.header h1 {
+
+    margin: 0;
+
+    color: var(--hazelnut);
+
+    font-size: 36px;
+
+}
+
+.header p {
+
+    margin: 8px 0 0;
+
+    max-width: 650px;
+
+    color: #777;
+
+    line-height: 1.5;
+
+}
+
+.headerIcon {
+
+    width: 76px;
+
+    height: 76px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--hazelnut),
+            var(--ochre)
+        );
+
+    color: white;
+
+    font-size: 30px;
+
+    box-shadow:
+        0 12px 25px
+        rgba(107,79,59,.15);
+
+}
+
+
+/* =========================================
+   PESQUISA
+========================================= */
+
+.searchSection {
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 22px;
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 10px 28px
+        rgba(0,0,0,.04);
+
+    margin-bottom: 22px;
+
+}
+
+.searchBox {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 5px 5px 5px 16px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 15px;
+
+    background: white;
+
+}
+
+.searchBox > svg {
+
+    color: var(--olive);
+
+}
+
+.searchBox input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-size: 14px;
+
+}
+
+.searchBox input::placeholder {
+
+    color: #aaa;
+
+}
+
+.searchBox button {
+
+    height: 44px;
+
+    padding: 0 22px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: var(--hazelnut);
+
+    color: white;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+.searchBox button:hover {
+
+    background: var(--ochre);
+
+}
+
+.quickFilters {
+
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 15px;
+
+}
+
+.quickFilters button {
+
+    padding: 8px 16px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    background: white;
+
+    color: #777;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+.quickFilters button:hover {
+
+    border-color: var(--water);
+
+}
+
+.quickFilters .activeFilter {
+
+    background: var(--water);
+
+    border-color: var(--water);
+
+    color: white;
+
+}
+
+
+/* =========================================
+   FILTROS
+========================================= */
+
+.filters {
+
+    padding: 22px;
+
+    margin-bottom: 26px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 22px;
+
+}
+
+.filterHeading {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+
+}
+
+.filterHeading > div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+}
+
+.filterHeading svg {
+
+    color: var(--olive);
+
+}
+
+.filterHeading strong {
+
+    color: var(--text);
+
+}
+
+.filterHeading > span {
+
+    color: #888;
+
+    font-size: 12px;
+
+}
+
+.filterGrid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 16px;
+
+}
+
+.filterGrid label > span {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #777;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+.selectWrapper {
+
+    position: relative;
+
+}
+
+.selectWrapper select {
+
+    width: 100%;
+
+    height: 44px;
+
+    padding: 0 38px 0 13px;
+
+    appearance: none;
+
+    border: 1px solid #ddd;
+
+    border-radius: 11px;
+
+    background: white;
+
+    color: var(--text);
+
+    outline: none;
+
+    cursor: pointer;
+
+}
+
+.selectWrapper select:focus {
+
+    border-color: var(--water);
+
+}
+
+.selectWrapper svg {
+
+    position: absolute;
+
+    right: 14px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    pointer-events: none;
+
+    color: #888;
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================
+   RESULTADOS
+========================================= */
+
+.results {
+
+    margin-bottom: 40px;
+
+}
+
+.resultsHeader {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+
+}
+
+.resultsHeader h2 {
+
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: 21px;
+
+}
+
+.resultsHeader p {
+
+    margin: 5px 0 0;
+
+    color: #888;
+
+    font-size: 13px;
+
+}
+
+.resultsCount {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 9px 13px;
+
+    border-radius: 10px;
+
+    background: rgba(111,183,183,.1);
+
+    color: var(--olive);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+.questionList {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+}
+
+.questionCard {
+
+    padding: 22px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 22px
+        rgba(0,0,0,.035);
+
+    transition: .25s;
+
+}
+
+.questionCard:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 14px 30px
+        rgba(0,0,0,.07);
+
+}
+
+.questionTop {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+}
+
+.questionTags {
+
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+
+}
+
+.questionTags span {
+
+    padding: 6px 9px;
+
+    border-radius: 8px;
+
+    background: #f3f1ed;
+
+    color: #777;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+}
+
+.questionTags .vestibularTag {
+
+    background: var(--hazelnut);
+
+    color: white;
+
+}
+
+.difficulty {
+
+    padding: 6px 10px;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+}
+
+.easy {
+
+    background: rgba(118,128,91,.13);
+
+    color: var(--olive);
+
+}
+
+.medium {
+
+    background: rgba(168,122,58,.13);
+
+    color: var(--ochre);
+
+}
+
+.hard {
+
+    background: rgba(180,70,50,.1);
+
+    color: #a04b3c;
+
+}
+
+.questionMeta {
+
+    display: flex;
+
+    gap: 20px;
+
+    margin: 15px 0 12px;
+
+}
+
+.questionMeta span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: #999;
+
+    font-size: 11px;
+
+}
+
+.questionMeta svg {
+
+    color: var(--water);
+
+}
+
+.questionText {
+
+    margin: 0;
+
+    max-width: 900px;
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+.questionActions {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 18px;
+
+}
+
+.questionActions button {
+
+    height: 40px;
+
+    padding: 0 17px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: var(--hazelnut);
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+.questionActions button:hover {
+
+    background: var(--ochre);
+
+}
+
+.questionActions .secondaryButton {
+
+    background: #f2f0ec;
+
+    color: var(--text);
+
+}
+
+.questionActions .secondaryButton:hover {
+
+    background: #e9e5de;
+
+}
+
+
+/* =========================================
+   VAZIO
+========================================= */
+
+.empty {
+
+    padding: 60px 20px;
+
+    text-align: center;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+}
+
+.empty div {
+
+    font-size: 36px;
+
+    margin-bottom: 12px;
+
+}
+
+.empty h3 {
+
+    margin: 0;
+
+    color: var(--text);
+
+}
+
+.empty p {
+
+    color: #888;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.modalOverlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 10000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    background: rgba(47,36,29,.45);
+
+    backdrop-filter: blur(4px);
+
+}
+
+.modal {
+
+    width: min(760px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.2);
+
+    animation: modalOpen .25s ease;
+
+}
+
+@keyframes modalOpen {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(.96);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+}
+
+.modalHeader {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+}
+
+.modalHeader span {
+
+    color: var(--olive);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+}
+
+.modalHeader h2 {
+
+    margin: 5px 0 0;
+
+    color: var(--text);
+
+}
+
+.modalHeader button {
+
+    width: 35px;
+
+    height: 35px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #f2f0ec;
+
+    color: #777;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+}
+
+.modalTags {
+
+    display: flex;
+
+    gap: 8px;
+
+    margin: 20px 0;
+
+    flex-wrap: wrap;
+
+}
+
+.modalTags span {
+
+    padding: 7px 11px;
+
+    border-radius: 9px;
+
+    background: var(--beige);
+
+    color: var(--hazelnut);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+}
+
+.modalQuestion {
+
+    color: var(--text);
+
+    line-height: 1.8;
+
+    font-size: 15px;
+
+}
+
+.alternatives {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 22px;
+
+}
+
+.alternatives button {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 13px;
+
+    text-align: left;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    background: white;
+
+    color: var(--text);
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+.alternatives button:hover {
+
+    border-color: var(--water);
+
+    background: rgba(111,183,183,.06);
+
+}
+
+.alternatives button span {
+
+    width: 28px;
+
+    height: 28px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: var(--beige);
+
+    color: var(--hazelnut);
+
+    font-weight: 700;
+
+}
+
+.modalFooter {
+
+    margin-top: 22px;
+
+    padding-top: 17px;
+
+    border-top: 1px solid var(--border);
+
+    color: #888;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media(max-width:1000px) {
+
+    .main {
+
+        padding: 28px;
+
+    }
+
+    .filterGrid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+@media(max-width:700px) {
+
+    .main {
+
+        padding: 20px 16px;
+
+    }
+
+    .headerIcon {
+
+        display: none;
+
+    }
+
+    .header h1 {
+
+        font-size: 30px;
+
+    }
+
+    .searchBox {
+
+        flex-wrap: wrap;
+
+        padding: 12px;
+
+    }
+
+    .searchBox input {
+
+        min-width: 150px;
+
+    }
+
+    .searchBox button {
+
+        width: 100%;
+
+    }
+
+    .quickFilters {
+
+        overflow-x: auto;
+
+    }
+
+    .resultsHeader {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+    }
+
+    .questionTop {
+
+        flex-direction: column;
+
+    }
+
+    .questionActions {
+
+        flex-direction: column;
+
+    }
+
+    .questionActions button {
+
+        width: 100%;
+
+    }
+
+}

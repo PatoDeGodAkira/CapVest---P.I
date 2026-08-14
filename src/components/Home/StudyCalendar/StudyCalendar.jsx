@@ -9,7 +9,7 @@ import {
 
 const week = ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
 
-const days = Array.from({length:35},(_,i)=>i+1);
+const days = Array.from({length:31},(_,i)=>i+1);
 
 const events=[
     "Revisão de Matemática",

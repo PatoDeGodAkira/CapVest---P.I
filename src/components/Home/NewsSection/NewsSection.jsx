@@ -8,7 +8,7 @@ import {
 const news = [
 
     {
-        image:"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=900",
+        image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZrXEhDQ5SlgCTCSqe8uSJ7ZAvcszMkzfaRXnAqFcR-GRUZ-cAQGNP-dnm&s=10",
         category:"ENEM",
         title:"Inscrições do ENEM 2027 começam em agosto",
         description:"Confira o cronograma completo e não perca os prazos."
