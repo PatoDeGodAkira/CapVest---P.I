@@ -7,9 +7,21 @@ import {
     FaBullseye
 } from "react-icons/fa";
 
-export default function HeroBanner(){
+export default function HeroBanner() {
 
-    return(
+    let user = null;
+
+    try {
+        user = JSON.parse(
+            localStorage.getItem("user")
+        );
+    } catch {
+        user = null;
+    }
+
+    const userName = user?.name || "Estudante";
+
+    return (
 
         <section className={styles.hero}>
 
@@ -19,13 +31,16 @@ export default function HeroBanner(){
             <div className={styles.left}>
 
                 <span className={styles.badge}>
-                    <FaGraduationCap/>
+
+                    <FaGraduationCap />
+
                     Plataforma de Estudos
+
                 </span>
 
                 <h1>
 
-                    Bom dia, Elias 👋
+                    Bom dia, {userName} 👋
 
                 </h1>
 
@@ -43,13 +58,13 @@ export default function HeroBanner(){
 
                         Continuar Estudos
 
-                        <FaArrowRight/>
+                        <FaArrowRight />
 
                     </button>
 
                     <button className={styles.secondary}>
 
-                        <FaCalendarAlt/>
+                        <FaCalendarAlt />
 
                         Ver Cronograma
 
@@ -65,7 +80,7 @@ export default function HeroBanner(){
 
                     <div className={styles.goalHeader}>
 
-                        <FaBullseye/>
+                        <FaBullseye />
 
                         <span>Meta Principal</span>
 
@@ -104,5 +119,4 @@ export default function HeroBanner(){
         </section>
 
     );
-
 }

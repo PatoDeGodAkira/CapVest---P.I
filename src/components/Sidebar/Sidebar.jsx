@@ -1,6 +1,7 @@
+import { useState } from "react";
 import styles from "./Sidebar.module.css";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import {
   FaHome,
@@ -65,11 +66,26 @@ const menu = [
 ];
 
 export default function Sidebar() {
+  const navigate = useNavigate();
+
+  const [user] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("user")) || null;
+    } catch {
+      return null;
+    }
+  });
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    navigate("/");
+  };
+
   return (
     <aside className={styles.sidebar}>
       <div>
-
-        {/* LOGO */}
 
         <NavLink
           to="/home"
@@ -86,8 +102,6 @@ export default function Sidebar() {
           <h2>CapVest</h2>
         </NavLink>
 
-        {/* PERFIL */}
-
         <NavLink
           to="/perfil"
           className={styles.profile}
@@ -95,12 +109,15 @@ export default function Sidebar() {
           <div className={styles.avatar}></div>
 
           <div>
-            <h4>João Silva</h4>
-            <span>Estudante</span>
+            <h4>
+              {user?.name || "Usuário"}
+            </h4>
+
+            <span>
+              Estudante
+            </span>
           </div>
         </NavLink>
-
-        {/* PESQUISA */}
 
         <div className={styles.search}>
           <FaSearch />
@@ -111,12 +128,8 @@ export default function Sidebar() {
           />
         </div>
 
-        {/* MENU */}
-
         <nav>
-
           {menu.map((item) => (
-
             <NavLink
               key={item.label}
               to={item.path}
@@ -129,26 +142,21 @@ export default function Sidebar() {
               {item.icon}
 
               <span>{item.label}</span>
-
             </NavLink>
-
           ))}
-
         </nav>
 
       </div>
 
-      {/* SAIR */}
-
-      <NavLink
-        to="/"
+      <button
+        type="button"
         className={styles.logout}
+        onClick={handleLogout}
       >
         <FaSignOutAlt />
 
         <span>Sair</span>
-
-      </NavLink>
+      </button>
 
     </aside>
   );

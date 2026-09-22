@@ -15,6 +15,22 @@ import {
 } from "react-icons/fa";
 
 export default function ProfilePage() {
+  let user = null;
+
+  try {
+    user = JSON.parse(localStorage.getItem("user"));
+  } catch {
+    user = null;
+  }
+
+  const userName = user?.name || "Usuário";
+  const userUsername = user?.username || "usuario";
+  const userAvatar =
+    user?.avatar_url || "https://i.pravatar.cc/300";
+  const userBio =
+    user?.bio ||
+    "Nenhuma montanha é alta demais para quem sobe um dia de cada vez.";
+
   const stats = [
     {
       title: "Questões Respondidas",
@@ -108,10 +124,7 @@ export default function ProfilePage() {
       <Sidebar />
 
       <main className={styles.content}>
-        {/* BACKGROUND */}
         <div className={styles.background}></div>
-
-        {/* HERO */}
 
         <section className={styles.hero}>
 
@@ -120,8 +133,8 @@ export default function ProfilePage() {
           <div className={styles.heroContent}>
 
             <img
-              src="https://i.pravatar.cc/300"
-              alt=""
+              src={userAvatar}
+              alt={userName}
               className={styles.avatar}
             />
 
@@ -131,14 +144,16 @@ export default function ProfilePage() {
                 Capivara Persistente • Nível 18
               </span>
 
-              <h1>João Silva</h1>
+              <h1>
+                {userName}
+              </h1>
 
               <p className={styles.user}>
-                @joaosilva
+                @{userUsername}
               </p>
 
               <p className={styles.bio}>
-                Nenhuma montanha é alta demais para quem sobe um dia de cada vez.
+                {userBio}
               </p>
 
               <div className={styles.tags}>
@@ -160,8 +175,6 @@ export default function ProfilePage() {
           </div>
 
         </section>
-
-        {/* XP */}
 
         <section className={styles.xpCard}>
 
@@ -194,8 +207,6 @@ export default function ProfilePage() {
 
         </section>
 
-        {/* GRID */}
-
         <section className={styles.statsGrid}>
 
           {stats.map((item) => (
@@ -223,11 +234,7 @@ export default function ProfilePage() {
 
         </section>
 
-        {/* DUAS COLUNAS */}
-
         <section className={styles.doubleGrid}>
-
-          {/* OBJETIVO */}
 
           <div className={styles.goalCard}>
 
@@ -252,8 +259,6 @@ export default function ProfilePage() {
 
           </div>
 
-          {/* EVOLUÇÃO */}
-
           <div className={styles.chartCard}>
 
             <div className={styles.cardHeader}>
@@ -263,20 +268,18 @@ export default function ProfilePage() {
 
             <div className={styles.fakeChart}>
 
-              <div style={{height:"55%"}}></div>
-              <div style={{height:"68%"}}></div>
-              <div style={{height:"74%"}}></div>
-              <div style={{height:"83%"}}></div>
-              <div style={{height:"72%"}}></div>
-              <div style={{height:"92%"}}></div>
+              <div style={{ height: "55%" }}></div>
+              <div style={{ height: "68%" }}></div>
+              <div style={{ height: "74%" }}></div>
+              <div style={{ height: "83%" }}></div>
+              <div style={{ height: "72%" }}></div>
+              <div style={{ height: "92%" }}></div>
 
             </div>
 
           </div>
 
         </section>
-
-        {/* HEATMAP */}
 
         <section className={styles.heatmapCard}>
 
@@ -303,8 +306,6 @@ export default function ProfilePage() {
           </div>
 
         </section>
-
-        {/* CONQUISTAS */}
 
         <section className={styles.badgesCard}>
 
@@ -333,8 +334,6 @@ export default function ProfilePage() {
           </div>
 
         </section>
-
-        {/* MATÉRIAS + HISTÓRICO */}
 
         <section className={styles.bottomGrid}>
 

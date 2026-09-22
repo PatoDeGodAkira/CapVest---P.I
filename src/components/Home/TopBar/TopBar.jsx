@@ -7,14 +7,14 @@ import {
     FaMoon
 } from "react-icons/fa";
 
-export default function TopBar(){
+export default function TopBar() {
 
     const today = new Date();
 
     const options = {
-        weekday:"long",
-        day:"numeric",
-        month:"long"
+        weekday: "long",
+        day: "numeric",
+        month: "long"
     };
 
     const data = today.toLocaleDateString(
@@ -22,7 +22,17 @@ export default function TopBar(){
         options
     );
 
-    return(
+    let user = null;
+
+    try {
+        user = JSON.parse(
+            localStorage.getItem("user")
+        );
+    } catch {
+        user = null;
+    }
+
+    return (
 
         <header className={styles.topbar}>
 
@@ -30,7 +40,7 @@ export default function TopBar(){
 
                 <div className={styles.search}>
 
-                    <FaSearch/>
+                    <FaSearch />
 
                     <input
                         type="text"
@@ -51,7 +61,7 @@ export default function TopBar(){
 
                 <button className={styles.streak}>
 
-                    <FaFire/>
+                    <FaFire />
 
                     <span>128 dias</span>
 
@@ -59,7 +69,7 @@ export default function TopBar(){
 
                 <button className={styles.iconButton}>
 
-                    <FaBell/>
+                    <FaBell />
 
                     <span className={styles.notification}></span>
 
@@ -67,22 +77,29 @@ export default function TopBar(){
 
                 <button className={styles.iconButton}>
 
-                    <FaMoon/>
+                    <FaMoon />
 
                 </button>
 
                 <div className={styles.user}>
 
                     <img
-                        src="https://i.pravatar.cc/150"
-                        alt="Usuário"
+                        src={
+                            user?.avatar_url ||
+                            "https://i.pravatar.cc/150"
+                        }
+                        alt={user?.name || "Usuário"}
                     />
 
                     <div>
 
-                        <strong>Elias</strong>
+                        <strong>
+                            {user?.name || "Usuário"}
+                        </strong>
 
-                        <span>Capivara Persistente</span>
+                        <span>
+                            Capivara Persistente
+                        </span>
 
                     </div>
 
@@ -93,5 +110,4 @@ export default function TopBar(){
         </header>
 
     );
-
 }
