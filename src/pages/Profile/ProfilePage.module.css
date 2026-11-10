@@ -134,7 +134,7 @@
 
     height:230px;
 
-    background-image:url("/assets/capfundo.jpg");
+    background-image:url("/assets/capfundo.png");
 
     background-size:cover;
 
@@ -1141,4 +1141,8 @@ button:hover{
 
     }
 
-}
+}.achievementHeading{font-size:14px;color:var(--hazelnut);margin:20px 0 10px}.lockedBadge{opacity:.45;filter:grayscale(1)}
+
+
+/* Ajustes de perfil e personalização */
+.pageHeading{position:relative;z-index:1;margin:0 0 24px}.pageHeading>span{font-size:11px;font-weight:800;letter-spacing:.13em;color:var(--olive)}.pageHeading h1{font-size:30px;color:var(--hazelnut);margin:7px 0}.pageHeading p{color:#81776e;margin:0}.heroContent{align-items:center;gap:28px}.avatarWrap{position:relative;flex:0 0 auto}.avatar{object-fit:cover;background:#eee8de}.photoButton{position:absolute;right:5px;bottom:5px;width:40px;height:40px;border:3px solid #fff;border-radius:50%;background:var(--hazelnut);color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 12px #0002}.photoButton:disabled,.editPhoto:disabled{opacity:.6;cursor:wait}.heroInfo h2{font-size:2rem;color:var(--text);margin:8px 0}.editPhoto{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(107,79,59,.18);background:#fbf9f5;color:var(--hazelnut);border-radius:10px;padding:9px 13px;font-weight:700;font-size:12px;cursor:pointer;margin-top:13px}.notice,.error{position:relative;z-index:1;padding:12px 16px;border-radius:12px;background:#edf4e8;color:#53683c;margin:0 0 16px}.error{background:#fff0ed;color:#a34436}.xpCard,.statsGrid,.badgesCard{position:relative;z-index:1}.xpCard,.badgesCard{background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}.statCard{background:#fff;border:1px solid var(--border);border-radius:17px;box-shadow:0 7px 22px rgba(0,0,0,.035)}.badgesCard{padding:28px}.heroInfo .bio{max-width:680px}@media(max-width:768px){.pageHeading h1{font-size:25px}.heroContent{align-items:center}.heroInfo h2{font-size:1.6rem}.editPhoto{justify-content:center}}

@@ -1,0 +1,16 @@
+const express = require("express");
+const controller = require("../Controller/examController");
+const requireAuth = require("../Middleware/requireAuth");
+const router = express.Router();
+router.get("/catalog", controller.catalog);
+router.post("/simulations", requireAuth, controller.createSimulation);
+router.get("/simulations/:id", requireAuth, controller.getSimulation);
+router.put("/simulations/:id/answers", requireAuth, controller.saveSimulationAnswers);
+router.post("/simulations/:id/submit", requireAuth, controller.submitSimulation);
+router.post("/answer/check", requireAuth, controller.answer);
+router.post("/answer/open", requireAuth, controller.answerOpen);
+router.post("/answer/open/review", requireAuth, controller.reviewOpenAnswer);
+router.get("/", controller.list);
+router.get("/:docId", controller.get);
+router.post("/:docId/submit", requireAuth, controller.submit);
+module.exports = router;

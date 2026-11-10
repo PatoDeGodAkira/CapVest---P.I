@@ -136,3 +136,30 @@ exports.login = (req, res) => {
         });
     });
 };
+
+exports.updateProfile = (req, res) => {
+    const fields = {};
+    const allowed = ["avatar_url", "bio", "city", "school", "education_level"];
+    for (const key of allowed) {
+        if (Object.prototype.hasOwnProperty.call(req.body || {}, key)) fields[key] = req.body[key];
+    }
+    if (fields.avatar_url !== undefined && fields.avatar_url !== null) {
+        if (typeof fields.avatar_url !== "string" || !/^data:image\/(jpeg|png|webp);base64,/.test(fields.avatar_url)) {
+            return res.status(400).json({ error: "Formato de imagem inválido." });
+        }
+        if (fields.avatar_url.length > 2_500_000) return res.status(413).json({ error: "A imagem otimizada ficou muito grande. Escolha outra foto." });
+    }
+    for (const key of ["bio", "city", "school", "education_level"]) {
+        if (fields[key] !== undefined && typeof fields[key] === "string") fields[key] = fields[key].trim().slice(0, key === "bio" ? 500 : 200);
+    }
+    userModel.updateProfile(req.user.id, fields, (error) => {
+        if (error) {
+            console.error("Erro ao atualizar perfil:", error);
+            return res.status(500).json({ error: "Não foi possível atualizar seu perfil." });
+        }
+        userModel.findById(req.user.id, (findError, users) => {
+            if (findError || !users?.length) return res.status(500).json({ error: "Perfil atualizado, mas não foi possível recarregar os dados." });
+            return res.json({ message: "Perfil atualizado.", user: users[0] });
+        });
+    });
+};

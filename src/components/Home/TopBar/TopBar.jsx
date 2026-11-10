@@ -1,13 +1,12 @@
 import styles from "./TopBar.module.css";
 
-import {
-    FaBell,
-    FaFire,
-    FaSearch,
-    FaMoon
-} from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { FaBell, FaFire, FaSearch, FaMoon } from "react-icons/fa";
+import { getProgress } from "../../../services/api";
 
 export default function TopBar() {
+    const [progress, setProgress] = useState(null);
+    useEffect(() => { getProgress().then(setProgress).catch(() => {}); }, []);
 
     const today = new Date();
 
@@ -22,15 +21,10 @@ export default function TopBar() {
         options
     );
 
-    let user = null;
-
-    try {
-        user = JSON.parse(
-            localStorage.getItem("user")
-        );
-    } catch {
-        user = null;
-    }
+    const user = (() => {
+        try { return JSON.parse(localStorage.getItem("user")); }
+        catch { return null; }
+    })();
 
     return (
 
@@ -63,7 +57,7 @@ export default function TopBar() {
 
                     <FaFire />
 
-                    <span>128 dias</span>
+                    <span>{progress ? `${progress.currentStreak} dias` : "— dias"}</span>
 
                 </button>
 

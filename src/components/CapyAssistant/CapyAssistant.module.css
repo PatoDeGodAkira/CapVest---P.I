@@ -838,3 +838,24 @@
     }
 
 }
+.capyResult {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  text-align: left;
+  padding: 12px;
+  margin-top: 9px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+}
+.capyResult:hover { border-color: var(--water); background: #fbfdfc; }
+.capyResult strong { font-size: 12px; color: var(--hazelnut); }
+.capyResult span { font-size: 12px; line-height: 1.45; }
+.capyResult small { color: #777; font-size: 11px; }
+.spin { animation: capySpin 1s linear infinite; }
+@keyframes capySpin { to { transform: rotate(360deg); } }
+@media (max-width: 480px) { .panel { width: min(390px, calc(100vw - 24px)); padding: 16px; } .assistant { right: 8px; } }

@@ -1,422 +1,117 @@
+import { useEffect, useRef, useState } from "react";
 import styles from "./ProfilePage.module.css";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import { getProgress, updateProfile } from "../../services/api";
+import { FaMedal, FaBullseye, FaBook, FaFire, FaStar, FaTrophy, FaCamera, FaUserEdit } from "react-icons/fa";
 
-import {
-  FaMedal,
-  FaBullseye,
-  FaChartLine,
-  FaBook,
-  FaClock,
-  FaFire,
-  FaBrain,
-  FaPenNib,
-  FaGraduationCap,
-  FaStar
-} from "react-icons/fa";
+const readUser = () => {
+  try { return JSON.parse(localStorage.getItem("user") || "null"); }
+  catch { return null; }
+};
+
+function resizeImage(file) {
+  return new Promise((resolve, reject) => {
+    if (!file.type.startsWith("image/")) return reject(new Error("Selecione um arquivo de imagem."));
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error("Não foi possível ler a imagem."));
+    reader.onload = () => {
+      const image = new Image();
+      image.onerror = () => reject(new Error("Imagem inválida."));
+      image.onload = () => {
+        const canvas = document.createElement("canvas");
+        const scale = Math.min(1, 640 / Math.max(image.width, image.height));
+        canvas.width = Math.round(image.width * scale);
+        canvas.height = Math.round(image.height * scale);
+        canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL("image/jpeg", 0.78));
+      };
+      image.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
 
 export default function ProfilePage() {
-  let user = null;
+  const [user, setUser] = useState(readUser);
+  const [progress, setProgress] = useState(null);
+  const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
+  const [saving, setSaving] = useState(false);
+  const fileRef = useRef(null);
 
-  try {
-    user = JSON.parse(localStorage.getItem("user"));
-  } catch {
-    user = null;
-  }
+  useEffect(() => {
+    getProgress().then(setProgress).catch((err) => setError(err.message));
+  }, []);
 
-  const userName = user?.name || "Usuário";
-  const userUsername = user?.username || "usuario";
-  const userAvatar =
-    user?.avatar_url || "https://i.pravatar.cc/300";
-  const userBio =
-    user?.bio ||
-    "Nenhuma montanha é alta demais para quem sobe um dia de cada vez.";
+  const handlePhoto = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    setError(""); setNotice(""); setSaving(true);
+    try {
+      if (file.size > 12 * 1024 * 1024) throw new Error("A imagem deve ter no máximo 12 MB antes da otimização.");
+      const avatar_url = await resizeImage(file);
+      const updated = await updateProfile({ avatar_url });
+      setUser(updated.user || { ...user, avatar_url });
+      localStorage.setItem("user", JSON.stringify(updated.user || { ...user, avatar_url }));
+      window.dispatchEvent(new Event("capvest:user-updated"));
+      setNotice("Foto de perfil atualizada!");
+    } catch (err) { setError(err.message || "Não foi possível atualizar a foto."); }
+    finally { setSaving(false); event.target.value = ""; }
+  };
 
   const stats = [
-    {
-      title: "Questões Respondidas",
-      value: "12.450",
-      icon: <FaBook />
-    },
-    {
-      title: "Precisão Geral",
-      value: "82%",
-      icon: <FaBullseye />
-    },
-    {
-      title: "Horas Estudadas",
-      value: "786h",
-      icon: <FaClock />
-    },
-    {
-      title: "Sequência",
-      value: "128 dias",
-      icon: <FaFire />
-    },
-    {
-      title: "Simulados",
-      value: "42",
-      icon: <FaGraduationCap />
-    },
-    {
-      title: "Redações",
-      value: "19",
-      icon: <FaPenNib />
-    }
+    { title: "Questões respondidas", value: progress?.questionsAnswered ?? "—", icon: <FaBook /> },
+    { title: "Precisão geral", value: progress ? `${progress.accuracy}%` : "—", icon: <FaBullseye /> },
+    { title: "XP conquistados", value: progress?.xp ?? "—", icon: <FaTrophy /> },
+    { title: "Sequência atual", value: progress ? `${progress.currentStreak} dias` : "—", icon: <FaFire /> }
   ];
-
-  const badges = [
-    "Mestre da Matemática",
-    "10 Mil Questões",
-    "100 Dias Consecutivos",
-    "Capivara Persistente",
-    "Especialista em Simulados",
-    "Maratonista dos Estudos"
-  ];
-
-  const subjects = [
-    {
-      name: "Matemática",
-      progress: 94
-    },
-    {
-      name: "Física",
-      progress: 84
-    },
-    {
-      name: "Química",
-      progress: 76
-    },
-    {
-      name: "Português",
-      progress: 89
-    },
-    {
-      name: "Biologia",
-      progress: 70
-    }
-  ];
-
-  const simulations = [
-    {
-      exam: "UNICAMP",
-      score: "91%",
-      date: "Ontem"
-    },
-    {
-      exam: "ENEM",
-      score: "87%",
-      date: "3 dias"
-    },
-    {
-      exam: "FUVEST",
-      score: "82%",
-      date: "1 semana"
-    },
-    {
-      exam: "UNESP",
-      score: "89%",
-      date: "2 semanas"
-    }
-  ];
+  const unlocked = progress?.achievements?.filter((achievement) => achievement.unlocked) || [];
+  const locked = progress?.achievements?.filter((achievement) => !achievement.unlocked) || [];
 
   return (
     <div className={styles.layout}>
       <Sidebar />
-
       <main className={styles.content}>
-        <div className={styles.background}></div>
-
+        <div className={styles.background} />
+        <div className={styles.pageHeading}><span>MINHA CONTA</span><h1>Meu perfil</h1><p>Acompanhe sua trajetória e personalize seu espaço no CapVest.</p></div>
         <section className={styles.hero}>
-
-          <div className={styles.banner}></div>
-
+          <div className={styles.banner} />
           <div className={styles.heroContent}>
-
-            <img
-              src={userAvatar}
-              alt={userName}
-              className={styles.avatar}
-            />
-
+            <div className={styles.avatarWrap}>
+              <img src={user?.avatar_url || "/assets/avatar-default.svg"} alt={user?.name || "Foto de perfil"} className={styles.avatar} />
+              <button className={styles.photoButton} type="button" onClick={() => fileRef.current?.click()} disabled={saving} aria-label="Escolher foto de perfil"><FaCamera /></button>
+              <input ref={fileRef} type="file" accept="image/png,image/jpeg,image/webp" hidden onChange={handlePhoto} />
+            </div>
             <div className={styles.heroInfo}>
-
-              <span className={styles.level}>
-                Capivara Persistente • Nível 18
-              </span>
-
-              <h1>
-                {userName}
-              </h1>
-
-              <p className={styles.user}>
-                @{userUsername}
-              </p>
-
-              <p className={styles.bio}>
-                {userBio}
-              </p>
-
-              <div className={styles.tags}>
-
-                <span>UNICAMP</span>
-
-                <span>Ciência da Computação</span>
-
-                <span>Vestibular 2027</span>
-
-              </div>
-
+              <span className={styles.level}>Capivara estudante · Nível {progress?.level ?? "—"}</span>
+              <h2>{user?.name || "Estudante"}</h2>
+              <p className={styles.user}>@{user?.username || "usuario"}</p>
+              <p className={styles.bio}>{user?.bio || "Cada questão respondida é mais um passo na sua preparação."}</p>
+              <div className={styles.tags}><span>{user?.school || "Escola não informada"}</span><span>{user?.education_level || "Estudante"}</span></div>
+              <button type="button" className={styles.editPhoto} onClick={() => fileRef.current?.click()} disabled={saving}><FaUserEdit /> {saving ? "Salvando foto..." : "Alterar foto de perfil"}</button>
             </div>
-
-            <button className={styles.editButton}>
-              Editar Perfil
-            </button>
-
           </div>
-
         </section>
-
+        {notice && <p className={styles.notice} role="status">{notice}</p>}
+        {error && <p className={styles.error} role="alert">{error}</p>}
         <section className={styles.xpCard}>
-
-          <div className={styles.xpTop}>
-
-            <div>
-
-              <h2>Experiência de Estudos</h2>
-
-              <p>
-                Você está entre os 8% estudantes mais ativos da plataforma.
-              </p>
-
-            </div>
-
-            <strong>2350 XP</strong>
-
-          </div>
-
-          <div className={styles.progressBar}>
-            <div
-              className={styles.progress}
-              style={{ width: "72%" }}
-            ></div>
-          </div>
-
-          <span>
-            Faltam 900 XP para alcançar o Nível 19
-          </span>
-
+          <div className={styles.xpTop}><div><h2>Experiência de estudos</h2><p>Seu nível evolui conforme você pratica e responde questões.</p></div><strong>{progress ? `${progress.xp} XP` : "— XP"}</strong></div>
+          <div className={styles.progressBar}><div className={styles.progress} style={{ width: `${progress?.levelProgress || 0}%` }} /></div>
+          <span>{progress ? `${progress.xpInLevel} de ${progress.xpForNextLevel} XP neste nível · faltam ${Math.max(0, progress.xpForNextLevel - progress.xpInLevel)} XP para o próximo nível` : "Carregando seu progresso..."}</span>
         </section>
-
         <section className={styles.statsGrid}>
-
-          {stats.map((item) => (
-
-            <div
-              key={item.title}
-              className={styles.statCard}
-            >
-
-              <div className={styles.statIcon}>
-                {item.icon}
-              </div>
-
-              <div>
-
-                <span>{item.title}</span>
-
-                <strong>{item.value}</strong>
-
-              </div>
-
-            </div>
-
-          ))}
-
+          {stats.map((item) => <div key={item.title} className={styles.statCard}><div className={styles.statIcon}>{item.icon}</div><div><span>{item.title}</span><strong>{item.value}</strong></div></div>)}
         </section>
-
-        <section className={styles.doubleGrid}>
-
-          <div className={styles.goalCard}>
-
-            <div className={styles.cardHeader}>
-              <FaBullseye />
-              <h2>Objetivo Atual</h2>
-            </div>
-
-            <h3>
-              Ciência da Computação
-            </h3>
-
-            <p>
-              Universidade Estadual de Campinas
-            </p>
-
-            <div className={styles.goalProgress}>
-              <div style={{ width: "63%" }}></div>
-            </div>
-
-            <span>63% concluído</span>
-
-          </div>
-
-          <div className={styles.chartCard}>
-
-            <div className={styles.cardHeader}>
-              <FaChartLine />
-              <h2>Evolução</h2>
-            </div>
-
-            <div className={styles.fakeChart}>
-
-              <div style={{ height: "55%" }}></div>
-              <div style={{ height: "68%" }}></div>
-              <div style={{ height: "74%" }}></div>
-              <div style={{ height: "83%" }}></div>
-              <div style={{ height: "72%" }}></div>
-              <div style={{ height: "92%" }}></div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-        <section className={styles.heatmapCard}>
-
-          <div className={styles.cardHeader}>
-            <FaBrain />
-            <h2>Mapa de Estudos</h2>
-          </div>
-
-          <div className={styles.heatmap}>
-
-            {Array.from({ length: 140 }).map((_, index) => (
-
-              <div
-                key={index}
-                className={`${styles.square} ${
-                  index % 5 === 0
-                    ? styles.active
-                    : ""
-                }`}
-              ></div>
-
-            ))}
-
-          </div>
-
-        </section>
-
         <section className={styles.badgesCard}>
-
-          <div className={styles.cardHeader}>
-            <FaMedal />
-            <h2>Conquistas</h2>
-          </div>
-
-          <div className={styles.badges}>
-
-            {badges.map((badge) => (
-
-              <div
-                key={badge}
-                className={styles.badge}
-              >
-
-                <FaStar />
-
-                {badge}
-
-              </div>
-
-            ))}
-
-          </div>
-
+          <div className={styles.cardHeader}><FaMedal /><h2>Conquistas</h2></div>
+          {!progress ? <p>Carregando conquistas...</p> : <>
+            <h3 className={styles.achievementHeading}>Desbloqueadas ({unlocked.length})</h3>
+            <div className={styles.badges}>{unlocked.map((item) => <div key={item.id} className={styles.badge}><FaStar />{item.title}</div>)}</div>
+            <h3 className={styles.achievementHeading}>Próximas conquistas</h3>
+            <div className={styles.badges}>{locked.map((item) => <div key={item.id} className={`${styles.badge} ${styles.lockedBadge}`} title={item.description}><FaStar />{item.title}</div>)}</div>
+            {unlocked.length === 0 && <p>Responda sua primeira questão para desbloquear sua primeira conquista.</p>}
+          </>}
         </section>
-
-        <section className={styles.bottomGrid}>
-
-          <div className={styles.subjectCard}>
-
-            <div className={styles.cardHeader}>
-              <FaBook />
-              <h2>Desempenho por Matéria</h2>
-            </div>
-
-            {subjects.map((subject) => (
-
-              <div
-                key={subject.name}
-                className={styles.subject}
-              >
-
-                <div className={styles.subjectTop}>
-                  <span>{subject.name}</span>
-                  <span>{subject.progress}%</span>
-                </div>
-
-                <div className={styles.subjectBar}>
-                  <div
-                    style={{
-                      width: `${subject.progress}%`
-                    }}
-                  ></div>
-                </div>
-
-              </div>
-
-            ))}
-
-          </div>
-
-          <div className={styles.historyCard}>
-
-            <div className={styles.cardHeader}>
-              <FaGraduationCap />
-              <h2>Últimos Simulados</h2>
-            </div>
-
-            <table>
-
-              <thead>
-
-                <tr>
-
-                  <th>Prova</th>
-
-                  <th>Nota</th>
-
-                  <th>Data</th>
-
-                </tr>
-
-              </thead>
-
-              <tbody>
-
-                {simulations.map((sim) => (
-
-                  <tr key={sim.exam}>
-
-                    <td>{sim.exam}</td>
-
-                    <td>{sim.score}</td>
-
-                    <td>{sim.date}</td>
-
-                  </tr>
-
-                ))}
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </section>
-
       </main>
     </div>
   );

@@ -1,0 +1,12 @@
+const express = require("express");
+const controller = require("../Controller/studyController");
+const requireAuth = require("../Middleware/requireAuth");
+const router = express.Router();
+router.use(requireAuth);
+router.get("/plan", controller.getPlan);
+router.put("/plan", controller.savePlan);
+router.post("/plan/generate", controller.generateTasks);
+router.post("/tasks", controller.createTask);
+router.patch("/tasks/:id", controller.updateTask);
+router.delete("/tasks/:id", controller.deleteTask);
+module.exports = router;

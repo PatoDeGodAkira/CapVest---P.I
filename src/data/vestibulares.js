@@ -45,7 +45,7 @@ const vestibulares = {
 
     subtitulo: "Universidade Estadual de Campinas",
 
-    banner: "/assets/vestibulares/unicamp/banner.jpg",
+    banner: "/assets/vestibulares/unicamp/banner.svg",
 
     descricao:
       "A UNICAMP é considerada uma das melhores universidades da América Latina. Seu vestibular possui primeira e segunda fase, além de provas específicas para alguns cursos.",
@@ -84,7 +84,7 @@ const vestibulares = {
 
     subtitulo: "Fundação Universitária para o Vestibular",
 
-    banner: "/assets/vestibulares/fuvest/banner.jpg",
+    banner: "/assets/vestibulares/fuvest/banner.svg",
 
     descricao:
       "A FUVEST é responsável pelo vestibular da Universidade de São Paulo (USP), sendo um dos processos seletivos mais concorridos do país.",

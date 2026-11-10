@@ -1,119 +1,53 @@
+import { useEffect, useState } from "react";
 import styles from "./NewsSection.module.css";
+import { FaArrowRight, FaNewspaper, FaSyncAlt } from "react-icons/fa";
 
-import {
-    FaArrowRight,
-    FaNewspaper
-} from "react-icons/fa";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
-const news = [
+export default function NewsSection() {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [updatedAt, setUpdatedAt] = useState(null);
 
-    {
-        image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZrXEhDQ5SlgCTCSqe8uSJ7ZAvcszMkzfaRXnAqFcR-GRUZ-cAQGNP-dnm&s=10",
-        category:"ENEM",
-        title:"Inscrições do ENEM 2027 começam em agosto",
-        description:"Confira o cronograma completo e não perca os prazos."
-    },
-
-    {
-        image:"https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=900",
-        category:"UNICAMP",
-        title:"Edital da UNICAMP é atualizado",
-        description:"Veja todas as mudanças para o próximo vestibular."
-    },
-
-    {
-        image:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=900",
-        category:"FUVEST",
-        title:"Calendário oficial divulgado",
-        description:"Primeira fase acontecerá no mês de novembro."
+  const loadNews = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      const response = await fetch(`${API_URL}/api/news/`);
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Não foi possível carregar as notícias.");
+      setItems(data.items || []);
+      setUpdatedAt(data.updatedAt || null);
+      if (data.warning) setError(data.warning);
+    } catch (err) {
+      setError(err.message || "Notícias indisponíveis no momento.");
+    } finally {
+      setLoading(false);
     }
+  };
 
-];
+  useEffect(() => { loadNews(); }, []);
+  const dateLabel = updatedAt ? new Date(updatedAt).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" }) : "";
 
-export default function NewsSection(){
-
-    return(
-
-        <section className={styles.section}>
-
-            <div className={styles.header}>
-
-                <div>
-
-                    <h2>Notícias</h2>
-
-                    <p>
-                        Acompanhe tudo sobre os vestibulares.
-                    </p>
-
-                </div>
-
-                <button>
-
-                    Ver todas
-
-                </button>
-
-            </div>
-
-            <div className={styles.grid}>
-
-                {
-
-                    news.map((item,index)=>(
-
-                        <article
-                            className={styles.card}
-                            key={index}
-                        >
-
-                            <img
-                                src={item.image}
-                                alt={item.title}
-                            />
-
-                            <div className={styles.content}>
-
-                                <span>
-
-                                    <FaNewspaper/>
-
-                                    {item.category}
-
-                                </span>
-
-                                <h3>
-
-                                    {item.title}
-
-                                </h3>
-
-                                <p>
-
-                                    {item.description}
-
-                                </p>
-
-                                <button>
-
-                                    Ler notícia
-
-                                    <FaArrowRight/>
-
-                                </button>
-
-                            </div>
-
-                        </article>
-
-                    ))
-
-                }
-
-            </div>
-
-        </section>
-
-    )
-
+  return (
+    <section className={styles.section}>
+      <div className={styles.header}>
+        <div><span className={styles.eyebrow}>FIQUE POR DENTRO</span><h2>Notícias dos vestibulares</h2><p>Atualizações recentes sobre ENEM, UNICAMP, FUVEST e processos seletivos.</p></div>
+        <button className={styles.refresh} onClick={loadNews} disabled={loading}><FaSyncAlt className={loading ? styles.spinning : ""} /> Atualizar</button>
+      </div>
+      {error && <p className={styles.notice} role="status">{error}</p>}
+      {loading && items.length === 0 ? <div className={styles.empty}>Buscando notícias recentes...</div> : items.length === 0 ? <div className={styles.empty}>Nenhuma notícia disponível agora. Tente atualizar em alguns instantes.</div> : (
+        <div className={styles.grid}>
+          {items.slice(0, 6).map((item) => (
+            <article className={styles.card} key={item.id}>
+              <div className={styles.cardTop}><span><FaNewspaper /> {item.category}</span><small>{item.publishedAt && !Number.isNaN(new Date(item.publishedAt).getTime()) ? new Date(item.publishedAt).toLocaleDateString("pt-BR") : "Recente"}</small></div>
+              <div className={styles.content}><h3>{item.title}</h3><p>{item.source}</p><a href={item.link} target="_blank" rel="noreferrer">Ler notícia <FaArrowRight /></a></div>
+            </article>
+          ))}
+        </div>
+      )}
+      <p className={styles.source}>Fonte: Google Notícias · {dateLabel ? `Feed atualizado em ${dateLabel}` : "As notícias são carregadas automaticamente"}. Ao abrir uma notícia, você será direcionado ao site de origem.</p>
+    </section>
+  );
 }

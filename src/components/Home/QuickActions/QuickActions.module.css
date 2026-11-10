@@ -158,4 +158,4 @@
 
     }
 
-}
+}.card{width:100%;text-align:left;border:1px solid var(--border);font:inherit;color:inherit;cursor:pointer;background:#fff}.card:hover{border-color:var(--water);transform:translateY(-3px)}

@@ -19,7 +19,7 @@ export default function Footer(){
                 <div className={styles.brand}>
 
                     <img
-                        src="/assets/logo.jpg"
+                        src="/assets/logo-capvest.svg"
                         alt="CapVest"
                         onError={(e)=>{
                             e.target.style.display="none";

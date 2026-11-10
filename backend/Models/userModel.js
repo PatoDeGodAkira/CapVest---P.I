@@ -35,6 +35,16 @@ const userModel = {
         );
     },
 
+    updateProfile: (id, fields, callback) => {
+        const allowed = ["avatar_url", "bio", "city", "school", "education_level"];
+        const keys = Object.keys(fields).filter((key) => allowed.includes(key));
+        if (!keys.length) return callback(null, { affectedRows: 0 });
+        const assignments = keys.map((key) => `${key} = ?`).join(", ");
+        const values = keys.map((key) => fields[key]);
+        values.push(new Date(), id);
+        db.query(`UPDATE users SET ${assignments}, updated_at = ? WHERE id = ?`, values, callback);
+    },
+
     findById: (id, callback) => {
         const sql = `
             SELECT

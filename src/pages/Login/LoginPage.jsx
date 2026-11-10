@@ -13,6 +13,8 @@ import {
 import styles from "./LoginPage.module.css";
 import animations from "./LoginAnimations.module.css";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 export default function LoginPage() {
   const navigate = useNavigate();
 
@@ -76,7 +78,7 @@ export default function LoginPage() {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/auth/login",
+        `${API_URL}/api/auth/login`,
         {
           method: "POST",
           headers: {
@@ -148,7 +150,7 @@ export default function LoginPage() {
       );
 
       const response = await fetch(
-        "http://localhost:3000/api/auth/register",
+        `${API_URL}/api/auth/register`,
         {
           method: "POST",
           headers: {
@@ -210,7 +212,7 @@ export default function LoginPage() {
         <div className={styles.brandTop}>
 
           <img
-            src="/assets/logo.jpg"
+            src="/assets/logo-capvest.svg"
             alt="CapVest"
             onError={(event) => {
               event.target.style.display = "none";
@@ -299,7 +301,7 @@ export default function LoginPage() {
                 <div className={styles.capybaraShadow}></div>
 
                 <img
-                  src="/assets/capybara-heto-png.webp"
+                  src="/assets/capybara-hero-png.webp"
                   alt="Capivara CapVest"
                   className={styles.capybara}
                   onError={(event) => {
@@ -389,7 +391,7 @@ export default function LoginPage() {
               <div className={styles.mobileLogo}>
 
                 <img
-                  src="/assets/logo.jpg"
+                  src="/assets/logo-capvest.svg"
                   alt="CapVest"
                 />
 
@@ -554,7 +556,7 @@ export default function LoginPage() {
               <div className={styles.mobileLogo}>
 
                 <img
-                  src="/assets/logo.jpg"
+                  src="/assets/logo-capvest.svg"
                   alt="CapVest"
                 />
 

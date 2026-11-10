@@ -9,7 +9,7 @@ create table users #1
     username VARCHAR(50) unique, #Nome de usuário
     email  VARCHAR(255) unique, #E-mail de login
     password_hash VARCHAR(255) not null, #Senha criptografada
-    avatar_url	TEXT null, #Foto de perfil
+    avatar_url	MEDIUMTEXT null, #Foto de perfil
     bio TEXT null, #Biografia
     city VARCHAR(100) null, #cidade
     school VARCHAR(200) null, #Escola

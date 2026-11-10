@@ -51,7 +51,10 @@
   height: 50px;
   border-radius: 50%;
   background: var(--water);
+  overflow: hidden;
+  flex: 0 0 50px;
 }
+.avatar img { width:100%; height:100%; object-fit:cover; display:block; }
 
 .profile h4 {
   color: var(--text);
@@ -88,6 +91,9 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  max-height: calc(100vh - 260px);
+  overflow-y: auto;
+  padding-right: 3px;
 }
 
 /* ---------- MENU ---------- */
@@ -169,4 +175,33 @@ nav {
     top: 0;
     z-index: 1000;
   }
+}
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    left: auto;
+    top: auto;
+    z-index: 10;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 0;
+    padding: 10px 14px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+  .sidebar > div { display: flex; align-items: center; gap: 12px; min-width: 0; flex: 1; }
+  .logo { margin: 0; gap: 7px; flex-shrink: 0; }
+  .logo img { width: 32px; height: 32px; }
+  .logo h2 { font-size: 17px; margin: 0; }
+  .profile, .search { display: none; }
+  nav { flex: 1; flex-direction: row; gap: 5px; max-height: none; overflow-x: auto; overflow-y: hidden; padding: 0 0 2px; }
+  .menuItem { height: 38px; flex: 0 0 auto; padding: 0 10px; gap: 7px; font-size: 11px; white-space: nowrap; }
+  .menuItem svg { font-size: 12px; }
+  .logout { width: 38px; min-width: 38px; height: 38px; border-radius: 10px; }
+  .logout span { display: none; }
 }

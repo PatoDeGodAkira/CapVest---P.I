@@ -1058,3 +1058,41 @@
     }
 
 }
+.resultsList { display: grid; gap: 18px; }
+.questionCard { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 22px; color: var(--text); box-shadow: 0 8px 24px rgba(47,36,29,.04); }
+.questionMeta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.questionMeta span { background: var(--beige); color: var(--hazelnut); padding: 6px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+.questionText { white-space: pre-wrap; line-height: 1.65; font-size: 15px; color: var(--text); }
+.alternatives { display: grid; gap: 8px; margin: 18px 0; }
+.alternative { display: flex; align-items: flex-start; gap: 10px; padding: 12px; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; line-height: 1.5; }
+.alternative input { margin-top: 4px; accent-color: var(--hazelnut); }
+.alternative strong { color: var(--hazelnut); }
+.selectedAlternative { border-color: var(--water); background: rgba(111,183,183,.08); }
+.correctAlternative { border-color: #56845a; background: rgba(86,132,90,.08); }
+.questionFooter { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: #777; font-size: 12px; }
+.questionFooter button { border: 0; border-radius: 10px; padding: 10px 16px; background: var(--hazelnut); color: white; font-weight: 700; cursor: pointer; }
+.questionFooter button:disabled { opacity: .55; cursor: not-allowed; }
+.questionFooter a { color: var(--hazelnut); text-decoration: none; display: inline-flex; gap: 7px; align-items: center; }
+.answerFeedback { margin-top: 14px; padding: 12px; border-radius: 10px; background: rgba(111,183,183,.12); color: var(--text); font-weight: 700; }
+.aiReason { display: block; margin-top: 10px; color: #777; }
+.emptyState { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 28px; color: #777; background: #fff; border-radius: 14px; margin-bottom: 18px; }
+.spin { animation: questionSpin 1s linear infinite; }
+@keyframes questionSpin { to { transform: rotate(360deg); } }
+@media (max-width: 600px) { .questionCard { padding: 15px; } .questionText { font-size: 14px; } }
+
+/* Resposta discursiva e refinamento visual */
+.openAnswerBox{display:grid;gap:10px;margin:18px 0 8px;padding:16px;background:#faf8f4;border:1px solid #eee7de;border-radius:14px}
+.openAnswerBox>label{font-size:13px;font-weight:750;color:var(--hazelnut)}
+.openAnswerBox textarea{width:100%;resize:vertical;min-height:145px;border:1px solid #e4dbd0;border-radius:10px;padding:13px;background:#fff;color:var(--text);font:inherit;line-height:1.65;outline-color:var(--ochre)}
+.openAnswerBox>div{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.openAnswerBox small{font-size:11px;line-height:1.5;color:#8a7e73}
+.openAnswerBox button{flex-shrink:0;border:0;border-radius:9px;background:var(--hazelnut);color:#fff;padding:10px 14px;font-size:12px;font-weight:700;cursor:pointer}
+.openAnswerBox button:disabled{opacity:.55;cursor:not-allowed}
+@media(max-width:800px){.main{padding:22px 16px}.header h1{font-size:29px}.headerIcon{width:56px;height:56px;font-size:22px}.openAnswerBox>div{align-items:stretch;flex-direction:column}.openAnswerBox button{width:100%}}
+.openActions{display:flex;gap:8px;flex-wrap:wrap}.openAnswerBox .reviewButton{background:#76805b}.openReview{margin-top:14px;padding:16px;border:1px solid #dce6d5;background:#f4f7f0;border-radius:12px;color:#4d5d43}.openReview strong{display:block;font-size:13px;margin-bottom:8px}.openReview p,.openReview li{font-size:12px;line-height:1.6}.openReview ul{padding-left:18px}.openReview small{display:block;margin-top:10px;color:#7b866f;font-size:10px;line-height:1.5}
+
+/* Padrão visual alinhado ao dashboard e ao perfil */
+.header{padding:26px 30px;background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:21px;box-shadow:0 8px 24px rgba(47,36,29,.035);margin-bottom:18px}.header h1{font-size:clamp(26px,3vw,35px);letter-spacing:-.7px;color:#2f241d}.header p{font-size:13px;color:#81766d}.eyebrow{color:#a87a3a;font-size:10px}.headerIcon{width:58px;height:58px;border-radius:15px;background:#f4eee6;color:#6b4f3b;box-shadow:none;font-size:22px}.searchSection{padding:18px;border-radius:17px;box-shadow:0 6px 20px rgba(47,36,29,.03)}.searchBox{border-color:#e8e0d6;border-radius:11px;padding:4px 5px 4px 13px}.searchBox button{height:40px;border-radius:9px;background:#6b4f3b}.quickFilters button{border-radius:9px;padding:8px 13px}.quickFilters .activeFilter{background:#6b4f3b;border-color:#6b4f3b}.questionCard{padding:21px;border-radius:17px;border:1px solid rgba(0,0,0,.06);box-shadow:0 7px 20px rgba(47,36,29,.03);margin-bottom:13px}.questionMeta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.questionMeta span{font-size:10px;color:#806f60;background:#f7f3ed;padding:6px 9px;border-radius:20px}.questionText{font-size:13px;line-height:1.75;color:#43382f;white-space:pre-wrap}.alternative{border-radius:10px;padding:12px;border-color:#e9e2d9}.alternative span{font-size:12px;line-height:1.6}.selectedAlternative{background:#fbf6ed;border-color:#a87a3a}.questionFooter{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid #f0ebe5;margin-top:15px;padding-top:13px}.questionFooter>span{font-size:10px;color:#8b8076;flex:1}.questionFooter button{border:0;border-radius:8px;background:#6b4f3b;color:#fff;padding:9px 12px;font-size:11px;font-weight:700}.questionFooter a{font-size:11px;color:#6b4f3b;text-decoration:none}.emptyState{background:#fff;border:1px solid #eee8e0;border-radius:13px;padding:20px;color:#81766d;font-size:12px}.answerFeedback{margin-top:12px;padding:12px;border-radius:10px;background:#f1f6ed;color:#5d744d;font-size:12px}.correctAlternative{border-color:#76805b;background:#f2f6ee}
+@media(max-width:800px){.header{padding:20px;align-items:flex-start}.header h1{font-size:25px}.searchBox{flex-wrap:wrap}.searchBox input{min-height:40px}.searchBox button{width:100%}.questionCard{padding:15px}.questionText{font-size:12px}}
+.questionContext{padding:13px 15px;margin:12px 0;background:#faf8f4;border-left:3px solid #a87a3a;border-radius:0 10px 10px 0;color:#71665d;font-size:12px;line-height:1.65;white-space:pre-wrap}
+@media(max-width:768px){.layout{display:block}}

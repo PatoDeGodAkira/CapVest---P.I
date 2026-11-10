@@ -20,22 +20,22 @@ export default function LandingPage() {
         {
             name: "Elias",
             role: "Desenvolvimento",
-            image: "/assets/elias.jpg"
+            image: ""
         },
         {
             name: "Lucca",
             role: "Desenvolvimento",
-            image: "/assets/lucca.jpg"
+            image: ""
         },
         {
             name: "Yasmin",
             role: "Projeto e Desenvolvimento",
-            image: "/assets/yasmin.jpg"
+            image: ""
         },
         {
             name: "Arthur",
             role: "Projeto e Desenvolvimento",
-            image: "/assets/arthur.jpg"
+            image: ""
         }
     ];
 
@@ -82,7 +82,7 @@ export default function LandingPage() {
                     className={styles.logo}
                 >
                     <img
-                        src="/assets/logo.jpg"
+                        src="/assets/logo-capvest.svg"
                         alt="CapVest"
                         onError={(event) => {
                             event.target.style.display = "none";
@@ -140,10 +140,7 @@ export default function LandingPage() {
                             </h1>
 
                             <p>
-                                O CapVest reúne tudo o que você precisa
-                                para organizar seus estudos, acompanhar
-                                seu desempenho e chegar cada vez mais
-                                perto da sua aprovação.
+                                Uma plataforma para reunir seus materiais, praticar com questões, acompanhar sua evolução e organizar uma preparação mais consistente para o vestibular.
                             </p>
 
                             <div className={styles.heroButtons}>
@@ -194,12 +191,11 @@ export default function LandingPage() {
                             <div className={styles.capybaraGlow}></div>
 
                             <img
-                                src="/assets/capybara-hero.png"
+                                src="/assets/capybara-hero-png.webp"
                                 alt="Capivara mascote do CapVest"
                                 className={styles.heroCapybara}
                                 onError={(event) => {
-                                    event.target.src =
-                                        "https://images.unsplash.com/photo-1603483080228-04f2313d9f10?auto=format&fit=crop&w=900&q=80";
+                                    event.currentTarget.src = "/assets/capybara-hero-png.webp";
                                 }}
                             />
 
@@ -277,11 +273,10 @@ export default function LandingPage() {
                             <div className={styles.imageDecoration}></div>
 
                             <img
-                                src="/assets/capybara-about.jpg"
+                                src="/assets/capybara-hero-png.webp"
                                 alt="Capivara do CapVest"
                                 onError={(event) => {
-                                    event.target.src =
-                                        "https://images.unsplash.com/photo-1603483080228-04f2313d9f10?auto=format&fit=crop&w=900&q=80";
+                                    event.currentTarget.src = "/assets/capybara-hero-png.webp";
                                 }}
                             />
 
@@ -541,15 +536,11 @@ export default function LandingPage() {
 
                                 <div className={styles.creatorImageWrapper}>
 
-                                    <img
-                                        src={creator.image}
-                                        alt={creator.name}
-                                        className={styles.creatorImage}
-                                        onError={(event) => {
-                                            event.target.src =
-                                                "https://i.pravatar.cc/500?img=12";
-                                        }}
-                                    />
+                                    {creator.image ? (
+                                        <img src={creator.image} alt={creator.name} className={styles.creatorImage} />
+                                    ) : (
+                                        <span className={styles.creatorInitial}>{creator.name.charAt(0)}</span>
+                                    )}
 
                                     <div className={styles.creatorCapybara}>
                                         🐹
@@ -613,29 +604,26 @@ export default function LandingPage() {
                     <div className={styles.capybaraGallery}>
 
                         <img
-                            src="/assets/capybara-1.jpg"
+                            src="/assets/capybara-hero-png.webp"
                             alt="Capivara"
                             onError={(event) => {
-                                event.target.src =
-                                    "https://images.unsplash.com/photo-1603483080228-04f2313d9f10?auto=format&fit=crop&w=600&q=80";
+                                event.currentTarget.style.display = "none";
                             }}
                         />
 
                         <img
-                            src="/assets/capybara-2.jpg"
+                            src="/assets/capybara-hero-png.webp"
                             alt="Capivara"
                             onError={(event) => {
-                                event.target.src =
-                                    "https://images.unsplash.com/photo-1603483080228-04f2313d9f10?auto=format&fit=crop&w=600&q=80";
+                                event.currentTarget.style.display = "none";
                             }}
                         />
 
                         <img
-                            src="/assets/capybara-3.jpg"
+                            src="/assets/capybara-hero-png.webp"
                             alt="Capivara"
                             onError={(event) => {
-                                event.target.src =
-                                    "https://images.unsplash.com/photo-1603483080228-04f2313d9f10?auto=format&fit=crop&w=600&q=80";
+                                event.currentTarget.style.display = "none";
                             }}
                         />
 
@@ -685,7 +673,7 @@ export default function LandingPage() {
                 <div className={styles.footerLogo}>
 
                     <img
-                        src="/assets/logo.jpg"
+                        src="/assets/logo-capvest.svg"
                         alt="CapVest"
                         onError={(event) => {
                             event.target.style.display = "none";

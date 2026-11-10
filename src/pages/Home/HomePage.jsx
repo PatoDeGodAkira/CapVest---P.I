@@ -10,10 +10,8 @@ import QuickActions from "../../components/Home/QuickActions/QuickActions";
 import StatsGrid from "../../components/Home/StatsGrid/StatsGrid";
 import RankingCard from "../../components/Home/RankingCard/RankingCard";
 
-import NewsSection from "../../components/Home/NewsSection/NewsSection";
-import StudyCalendar from "../../components/Home/StudyCalendar/StudyCalendar";
-import EventsCard from "../../components/Home/EventsCard/EventsCard";
 import Footer from "../../components/Home/Footer/Footer";
+import NewsSection from "../../components/Home/NewsSection/NewsSection";
 
 export default function HomePage() {
 
@@ -48,14 +46,6 @@ export default function HomePage() {
                 </section>
 
                 <NewsSection />
-
-                <section className={styles.calendarRow}>
-
-                    <StudyCalendar />
-
-                    <EventsCard />
-
-                </section>
 
                 <Footer />
 

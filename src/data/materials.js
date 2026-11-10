@@ -7,7 +7,7 @@ const materials = [
 
     color: "#6fb7b7",
 
-    image: "/assets/enem.png",
+    image: "/assets/enem.svg",
 
     description:
       "O Exame Nacional do Ensino Médio é a principal porta de entrada para universidades brasileiras.",
@@ -105,7 +105,7 @@ const materials = [
 
     color: "#a87a3a",
 
-    image: "/assets/unicamp.png",
+    image: "/assets/unicamp.svg",
 
     description:
       "Vestibular da Universidade Estadual de Campinas, conhecido pelo alto nível de exigência.",
@@ -208,7 +208,7 @@ const materials = [
 
     color: "#76805b",
 
-    image: "/assets/fuvest.png",
+    image: "/assets/fuvest.svg",
 
     description:
       "Vestibular da Universidade de São Paulo com provas de primeira e segunda fase.",
